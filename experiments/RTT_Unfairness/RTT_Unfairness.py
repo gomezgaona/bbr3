@@ -56,9 +56,9 @@ def main():
     # Change delay in host hs1 
     sys.stdout.write(f"\rAdding {delay} seconds delay to hs2\n" )
     sys.stdout.write(f"\rTotal delay observed from hs2 0.02 seconds + {delay} seconds = 0.1 seconds\n" )
-    #netem_cmd_hs2 = f'{h}2 tc qdisc add dev hs2-eth0 root netem delay {delay}s'
-    #print(netem_cmd_hs2)
-    #os.system(netem_cmd_hs2)
+    netem_cmd_hs2 = f'{h}2 tc qdisc add dev hs2-eth0 root netem delay {delay}s'
+    print(netem_cmd_hs2)
+    os.system(netem_cmd_hs2)
   
     for bdp in BDP:
 

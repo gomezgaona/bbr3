@@ -48,16 +48,15 @@ def start_mininet_hosts(num_hosts, buffer_size, btlbw, delay):
     print(limit)
 
     tbf_cmd = f'tc qdisc add dev s1-eth1 root handle 1: tbf rate {btlbw} burst {burst} limit {limit}'
-    #netem_cmd_s1 = f'tc qdisc add dev s1-eth1 parent 1: handle 2: netem delay {delay}s'
+    netem_cmd_s1 = f'tc qdisc add dev s1-eth1 parent 1: handle 2: netem delay {delay}s'
     
-    #netem_cmd_s2 = f'tc qdisc add dev s2-eth1 root handle 1: netem delay {delay}s'
-    #tbf_cmd = f'tc qdisc add dev s1-eth1 root tbf rate {btlbw} burst {burst} limit {limit}'
+    netem_cmd_s2 = f'tc qdisc add dev s2-eth1 root handle 1: netem delay {delay}s'
 
     os.system(tbf_cmd)
     print(f"Limiting the bottleneck bandwidth to {btlbw} bps")
 
-    #os.system(netem_cmd_s1)
-    #os.system(netem_cmd_s2)
+    os.system(netem_cmd_s1)
+    os.system(netem_cmd_s2)
     print(f"Setting the delay to {2*delay} seconds")
    
 

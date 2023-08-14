@@ -14,11 +14,13 @@ def start_mininet_hosts(num_hosts, buffer_size, btlbw, delay):
 
     # Create switches
     s1 = net.addSwitch('s1', cls=OVSKernelSwitch, failMode='standalone')
+    s12 = net.addSwitch('s12', cls=OVSKernelSwitch, failMode='standalone')
     s2 = net.addSwitch('s2', cls=OVSKernelSwitch, failMode='standalone')
     print("Creating switches")
 
     # Connect s1<->s2
-    net.addLink(s1, s2)
+    net.addLink(s1, s12)
+    net.addLink(s12, s2)
     print("Connecting switch s1 to switch s2")
 
     num_hosts = int(num_hosts/2)
@@ -46,20 +48,19 @@ def start_mininet_hosts(num_hosts, buffer_size, btlbw, delay):
     burst = int(btlbw/250/8)
     limit = int(btlbw*delay*(1.024**2)/8) # Setting the limit to BDP
     print(limit)
-
-    tbf_cmd = f'tc qdisc add dev s1-eth1 root handle 1: tbf rate {btlbw} burst {burst} limit {limit}'
-    #netem_cmd_s1 = f'tc qdisc add dev s1-eth1 parent 1: handle 2: netem delay {delay}s'
-    
-    #netem_cmd_s2 = f'tc qdisc add dev s2-eth1 root handle 1: netem delay {delay}s'
+    netem_cmd_s1 = f'tc qdisc add dev s1-eth1 root handle 1: netem delay {delay}s'
+    tbf_cmd = f'tc qdisc add dev s12-eth2 root handle 1: tbf rate {btlbw} burst {burst} limit {limit}'
+    fq_codel_cmd = f'tc qdisc add dev s12-eth2 parent 1: handle 2: fq_codel'
+    netem_cmd_s2 = f'tc qdisc add dev s2-eth1 root handle 1: netem delay {delay}s'
     #tbf_cmd = f'tc qdisc add dev s1-eth1 root tbf rate {btlbw} burst {burst} limit {limit}'
-
+    os.system(netem_cmd_s1)
+    os.system(netem_cmd_s2)
+    print(f"Setting the delay to {2*delay} seconds")
     os.system(tbf_cmd)
     print(f"Limiting the bottleneck bandwidth to {btlbw} bps")
+    #os.system(fq_codel_cmd)
+    #print(f"Enabling FQ-CoDel in switch s1")
 
-    #os.system(netem_cmd_s1)
-    #os.system(netem_cmd_s2)
-    print(f"Setting the delay to {2*delay} seconds")
-   
 
     # Starting iperf3 servers
     for i in range(1, num_hosts + 1):
