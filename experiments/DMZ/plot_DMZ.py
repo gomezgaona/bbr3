@@ -25,7 +25,7 @@ def extract_retrans(filename):
     return retrans 
 
 def plot_throughput():
-
+    global plt, np
     delay = [2e-3, 20e-3, 40e-3, 60e-3, 80e-3, 100e-3]
     loss = 0.025
     cubic = []
@@ -67,12 +67,12 @@ def plot_throughput():
     #Blue: #2D72B7 
     #Green: #82AA45
     #Garnet: #95253B
-
+    RTT = ['2','20','40','60','80','100']
     #Plotting the metrics as a time's function
-    plt.plot(delay, cubic, '#2D72B7', linewidth=2, label='CUBIC',marker ='o')
-    plt.plot(delay, bbr3,  '#95253B', linewidth=2, label='BBRv3',marker ='o')
+    plt.plot(RTT, cubic, '#2D72B7', linewidth=2, label='CUBIC',marker ='o')
+    plt.plot(RTT, bbr3,  '#95253B', linewidth=2, label='BBRv3',marker ='o')
 
-    #Setting the y-axis labels and the x-axis label
+    #Setting the y-axis labels and the x-axis labe
     plt.set_ylabel('Throughput [Gbps]', fontsize=font_size)
     plt.set_xlabel('RTT [ms]', fontsize=font_size)
 
@@ -140,10 +140,10 @@ def plot_retrans():
     #Blue: #2D72B7 
     #Green: #82AA45
     #Garnet: #95253B
-
+    RTT = ['2','20','40','60','80','100']
     #Plotting the metrics as a time's function
-    plt.plot(delay, cubic, '#2D72B7', linewidth=2, label='CUBIC',marker ='o')
-    plt.plot(delay, bbr3,  '#95253B', linewidth=2, label='BBRv3',marker ='o')
+    plt.plot(RTT, cubic, '#2D72B7', linewidth=2, label='CUBIC',marker ='o')
+    plt.plot(RTT, bbr3,  '#95253B', linewidth=2, label='BBRv3',marker ='o')
 
     #Setting the y-axis labels and the x-axis label
     plt.set_ylabel('Retransmissions [Packets]', fontsize=font_size)
@@ -171,7 +171,8 @@ def plot_retrans():
     fig.savefig("retrans_RTT.pdf", bbox_inches='tight')    
 
 def main():
-    plot_retrans()
+    #plot_retrans()
+    plot_throughput()
 
 if __name__ == '__main__':
     main()
