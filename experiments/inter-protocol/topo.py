@@ -46,7 +46,7 @@ def start_mininet_hosts(num_hosts, buffer_size, btlbw, delay):
     burst = int(btlbw/250/8)
     limit = int(btlbw*delay*(1.024**2)/8) # Setting the limit to BDP
     print(limit)
-    netem_cmd_s1 = f'tc qdisc add dev s1-eth1 root handle 1: netem delay {delay}s'
+    netem_cmd_s1 = f'tc qdisc add dev s1-eth1 root handle 1: netem delay {delay}s loss 0.025%'
     tbf_cmd = f'tc qdisc add dev s1-eth1 parent 1: handle 2: tbf rate {btlbw} burst {burst} limit {limit}'
     netem_cmd_s2 = f'tc qdisc add dev s2-eth1 root handle 1: netem delay {delay}s'
     

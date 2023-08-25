@@ -43,6 +43,7 @@ def main():
     BDP = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
     Runs = 10
     N_flows = 100
+    '''
     for i in range(1, Runs + 1):
         for bdp in BDP:
             change_BDP(bdp)
@@ -64,7 +65,7 @@ def main():
             run_iperf_test(f"{h}{flow}", flow, f"10.0.1.{flow}", duration, "bbr", bdp, i)
 
             time.sleep(duration + 3)
-    '''
+
     sys.stdout.write("\rTest is done\n")
 
 if __name__ == '__main__':

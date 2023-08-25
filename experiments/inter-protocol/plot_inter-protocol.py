@@ -178,8 +178,8 @@ def plot_timing_100_flows():
     fig.savefig("inter-protocol_100_flows_loss.pdf", bbox_inches='tight')
 
 def main():
-    #plot_timing_2_flows()
-    plot_timing_100_flows()
+    plot_timing_2_flows()
+    #plot_timing_100_flows()
 
 if __name__ == '__main__':
     main()
