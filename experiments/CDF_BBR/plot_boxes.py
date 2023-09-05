@@ -1,3 +1,4 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -12,6 +13,13 @@ def extract_throughput(filename):
                 # Line does not contain a valid number
                 pass
     return numbers
+
+
+font = {'family' : 'normal',
+        'weight' : 'normal',
+        'size'   : 26}
+f_size = 26
+matplotlib.rc('font', **font)
 
 cc="bbr"
 # Generate some random data
@@ -33,7 +41,7 @@ data = [data_1, data_2, data_3, data_4,
         data_9, data_10]#, data_11, data_12]
 
 # Create a figure and axes
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(1, 1, sharex=True,figsize=(10,8))
 
 # Create a boxplot
 ax.boxplot(data, showfliers=False,medianprops = dict(color = "black", linewidth = 1.0))
@@ -45,7 +53,7 @@ ax.set_xticklabels(['10', '20', '30', '40',
 ax.set_xlabel('Delay [ms]')
 ax.set_ylabel('Throughput [Gbps]')
 #ax.set_title('R')
-ax.set_ylim(0.9,1.025)
+ax.set_ylim(0.9,1.1)
 # Show the plot
 plt.show()
 fig.savefig(f"{cc}_boxplot.pdf", bbox_inches='tight')
