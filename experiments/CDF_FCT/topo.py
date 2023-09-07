@@ -44,7 +44,7 @@ def start_mininet_hosts(num_hosts, buffer_size, btlbw, delay):
 
     # Setting the Delay and Limiting the Bottleneck Bandwidth
     burst = int(btlbw/250/8)
-    limit = int(btlbw*delay*(1.024**2)/8) # Setting the limit to BDP
+    limit = int(2*10*btlbw*delay*(1.024**2)/8) # Setting the limit to BDP
     print(limit)
 
     
@@ -54,7 +54,7 @@ def start_mininet_hosts(num_hosts, buffer_size, btlbw, delay):
     netem_cmd_s2 = f'tc qdisc add dev s2-eth1 root handle 1: netem delay {delay}s'
 
     os.system(netem_cmd_s1)
-    #os.system(netem_cmd_s2)
+    os.system(netem_cmd_s2)
     print(f"Setting the delay to {2*delay} seconds")
 
     os.system(tbf_cmd)
