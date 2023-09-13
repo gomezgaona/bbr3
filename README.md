@@ -48,7 +48,7 @@ python3 topo.py
 python3 run_RTT_Unfariness.py
 ```
 
-Feel free to customize the topology and test parameters by modifying the Python scripts
+Feel free to customize the topology and test parameters by modifying the Python scripts.
 
 ## Access to the VM
 Send your request to gomezgaj [at] email [dot] sc [dot] edu and I will be sharing it with you.
