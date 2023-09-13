@@ -6,7 +6,7 @@ This repository contains resources related to the performance evaluation of BBRv
 
 ## Paper Abstract
 
-[Link to Full Paper (if available)](link_to_paper.pdf)
+[Link to Full Paper (coming soon)]
 
 This paper presents a comprehensive evaluation of BBRv3, considering scenarios with different numbers of competing flows, RTTs, loss rates, and buffer sizes. The experiments shed light on BBRv3's coexistence with CUBIC, its resilience to packet losses, fairness considerations, queue occupancy, bottleneck bandwidth estimation, flow completion times, and optimal configurations in various network conditions. 
 
