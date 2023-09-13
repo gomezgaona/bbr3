@@ -26,11 +26,14 @@ To replicate the experiments or explore the data and visualizations, follow thes
 
 ```bash
 git clone https://github.com/gomezgaona/bbr3.git
-
+```
 2. Navigate in the experiment directory
 
 3. Run the topology file
+```bash
 python3 topo.py
-
-4. Run the experiment script associated with the topology
+```
+5. Run the experiment script associated with the topology
+```bash
 python3 run_exeperiment.py
+```
