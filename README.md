@@ -28,12 +28,22 @@ To replicate the experiments or explore the data and visualizations, follow thes
 git clone https://github.com/gomezgaona/bbr3.git
 ```
 2. Navigate in the experiment directory
-
-3. Run the topology file
+```bash
+cd experiments
+```
+3. Enter the directory of one of the experiments (e.g., RTT_Unfairness)
+```bash
+cd RTT_Unfairness
+```
+4. Run the topology file
 ```bash
 python3 topo.py
 ```
 5. Run the experiment script associated with the topology
 ```bash
-python3 run_exeperiment.py
+python3 run_RTT_Unfariness.py
 ```
+Feel free to customize the topology and test parameters by modifying the Python scripts
+
+## Access to the VM
+Send your request to gomezgaj [at] email [dot] sc [dot] edu and I will be sharing it with you.
