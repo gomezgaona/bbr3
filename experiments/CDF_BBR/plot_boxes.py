@@ -23,16 +23,16 @@ matplotlib.rc('font', **font)
 
 cc="bbr"
 # Generate some random data
-data_1 = extract_throughput(f"results/{cc}_10.dat")
-data_2 = extract_throughput(f"results/{cc}_20.dat")
-data_3 = extract_throughput(f"results/{cc}_30.dat")
-data_4 = extract_throughput(f"results/{cc}_40.dat")
-data_5 = extract_throughput(f"results/{cc}_50.dat")
-data_6 = extract_throughput(f"results/{cc}_60.dat")
-data_7 = extract_throughput(f"results/{cc}_70.dat")
-data_8 = extract_throughput(f"results/{cc}_80.dat")
-data_9 = extract_throughput(f"results/{cc}_90.dat")
-data_10 = extract_throughput(f"results/{cc}_100.dat")
+data_1 = extract_throughput(f"results/{cc}_10_sw.dat")
+data_2 = extract_throughput(f"results/{cc}_20_sw.dat")
+data_3 = extract_throughput(f"results/{cc}_30_sw.dat")
+data_4 = extract_throughput(f"results/{cc}_40_sw.dat")
+data_5 = extract_throughput(f"results/{cc}_50_sw.dat")
+data_6 = extract_throughput(f"results/{cc}_60_sw.dat")
+data_7 = extract_throughput(f"results/{cc}_70_sw.dat")
+data_8 = extract_throughput(f"results/{cc}_80_sw.dat")
+data_9 = extract_throughput(f"results/{cc}_90_sw.dat")
+data_10 = extract_throughput(f"results/{cc}_100_sw.dat")
 #data_11 = extract_throughput(f"results/{cc}_110.dat")
 #data_12 = extract_throughput(f"results/{cc}_120.dat")
 
@@ -50,10 +50,11 @@ ax.boxplot(data, showfliers=False,medianprops = dict(color = "black", linewidth 
 ax.set_xticklabels(['10', '20', '30', '40',
                     '50', '60', '70', '80',
                     '90', '100'])#, '110', '120',])
-ax.set_xlabel('Delay [ms]')
+ax.set_xlabel('Propagataion delay [ms]')
 ax.set_ylabel('Throughput [Gbps]')
 #ax.set_title('R')
-ax.set_ylim(0.9,1.1)
+#ax.set_ylim(0.9,1.05, 0.005)
+ax.set_yticks(np.arange(0.9, 1.05, 0.05))
 # Show the plot
 plt.show()
-fig.savefig(f"{cc}_boxplot.pdf", bbox_inches='tight')
+fig.savefig(f"{cc}_boxplot_sw.pdf", bbox_inches='tight')
