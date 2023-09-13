@@ -25,6 +25,12 @@ To replicate the experiments or explore the data and visualizations, follow thes
 1. Clone this repository to your local machine.
 
 ```bash
-git clone https://github.com/yourusername/bbrv3-performance-evaluation.git
+git clone https://github.com/gomezgaona/bbr3.git
 
-[Insert Citation Here]
+2. Navigate in the experiment directory
+
+3. Run the topology file
+python3 topo.py
+
+4. Run the experiment script associated with the topology
+python3 run_exeperiment.py
