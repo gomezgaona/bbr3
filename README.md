@@ -6,7 +6,7 @@ This repository contains resources related to the performance evaluation of BBRv
 
 ## Paper Abstract
 
-[Link to Full Paper (coming soon)]
+[Link to Full Paper: https://www.sciencedirect.com/science/article/pii/S0140366424001658]
 
 The first version of the Bottleneck Bandwidth and Round-Trip Time (BBRv1) congestion control algorithm (CCA), introduced by Google in 2016, marked a significant advancement in network communication. It presented high performance in scenarios with high packet losses and routers equipped with small buffers. Unlike traditional loss-based algorithms like CUBIC and Reno, which rely solely on detecting packet losses as a sign of congestion, BBRv1 took a novel approach. It aimed to find the optimal balance between maximizing throughput and minimizing delay, disregarding packet losses. However, this approach presented fairness issues when interacting with loss-based algorithms. To address these fairness problems, BBRv2 was developed as a successor to BBRv1. BBRv2 incorporated multiple metrics, including available bandwidth, loss rates, Round-trip Time (RTT), and Explicit Congestion Notification (ECN) markings, to model network conditions. This approach improved the fairness with loss-based CCAs. Despite the improvements introduced in BBRv2, some issues and performance limitations were identified. Therefore, in 2023, Google released BBRv3, which fixed the bugs observed in BBRv2 and tuned performance parameters to ensure a better coexistence among competing flows.
 
